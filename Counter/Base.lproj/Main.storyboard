@@ -27,7 +27,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" editable="NO" text="text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3q-ql-Tke">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3q-ql-Tke">
                                 <rect key="frame" x="20" y="169" width="353" height="400"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
@@ -40,7 +40,7 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJs-T6-Gdx">
                                 <rect key="frame" x="20" y="629" width="150" height="50"/>
-                                <color key="backgroundColor" red="0.68171127650628571" green="0.9420234942753325" blue="0.69862854958310272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.9420234942753325" green="0.56235668216417956" blue="0.51977525570551364" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ORp-cE-UeH"/>
                                     <constraint firstAttribute="width" constant="150" id="blO-Kz-ZDx"/>
@@ -56,7 +56,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZ6-4c-Buc">
                                 <rect key="frame" x="223" y="629" width="150" height="50"/>
-                                <color key="backgroundColor" red="0.9420234942753325" green="0.68358976522684134" blue="0.68358976522684134" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.52736640875433416" green="0.70691824290140748" blue="0.9420234942753325" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="MaB-fc-ee8"/>
                                     <constraint firstAttribute="height" constant="50" id="z2s-4X-bGc"/>
@@ -79,8 +79,8 @@
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="arrow.triangle.2.circlepath" catalog="system" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="default" weight="bold"/>
+                                    <imageReference key="image" image="x.circle" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="26" scale="default" weight="bold"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="resetScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YeD-fL-xQx"/>
@@ -119,9 +119,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="104"/>
         <image name="minus" catalog="system" width="128" height="26"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="x.circle" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

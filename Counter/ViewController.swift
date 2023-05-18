@@ -48,6 +48,8 @@ class ViewController: UIViewController {
         historyText.layer.cornerRadius = 10
         historyText.clipsToBounds = true
         
+        historyArray.append("История изменений:")
+        
         
         
         //MARK: КНОПКИ
