@@ -14,13 +14,18 @@ class ViewController: UIViewController {
             updateScoreLabel()
         }
     }
+    private let textLabel: String = "Значение счетчика: "
+    private var historyArray: [String] = [] {
+        didSet {
+            updateTextLabel()
+        }
+    }
     
     
     // outlet отображения счетчика
     @IBOutlet weak var scoreLabel: UILabel!
     // outlet отображения истории изменений
     @IBOutlet weak var historyText: UITextView!
-    
     // outlet кнопки увеличения значения
     @IBOutlet weak var addButton: UIButton!
     // outlet кнопки уменьшения значения
@@ -31,11 +36,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //MARK: LABEL счетчик
-        // Добавление форматированного текста в lable
-        scoreLabel.attributedText = changeScoreApperance(of: "Значение счетчика: \(score)")
         // Округление краев lable
         scoreLabel.layer.cornerRadius = 10
         scoreLabel.clipsToBounds = true
+        // Добавление форматированного текста по умолчанию в lable
+        scoreLabel.attributedText = changeApperanceScore(for: textLabel + "\(score)")
+
         
         //MARK: TextView история изменений
         //Округление краев textField
@@ -43,30 +49,38 @@ class ViewController: UIViewController {
         historyText.clipsToBounds = true
         
         
+        
         //MARK: КНОПКИ
         // изменение внешнего вида у кнопок увеличения, уменьшения и сброса значения
-        addButton = changingApperanceButton(of: addButton)
-        subtractButton = changingApperanceButton(of: subtractButton)
-        resetButton = changingApperanceButton(of: resetButton)
+        changeApperanceButton(for: addButton)
+        changeApperanceButton(for: subtractButton)
+        changeApperanceButton(for: resetButton)
         
     }
     
+    //MARK: action на кнопки
     @IBAction func addScoreButton(_ sender: Any) {
         score += 1
+        historyArray.append("[\(currentDate())]: значение изменено на +1")
     }
     
     @IBAction func subtractScoreButton(_ sender: Any) {
-        score -= 1
+        if score == 0 {
+            historyArray.append("[\(currentDate())]: попытка уменьшить значение счётчика ниже 0")
+        } else {
+            score -= 1
+            historyArray.append("[\(currentDate())]: значение изменено на -1")
+        }
     }
     
     @IBAction func resetScoreButton(_ sender: Any) {
         score = 0
+        historyArray.append("[\(currentDate())]: значение сброшено")
     }
-
     
     
     //MARK: метод для изменения отображения кнопки (размер текста, округление формы)
-    private func changingApperanceButton(of button: UIButton!) -> UIButton! {
+    private func changeApperanceButton(for button: UIButton!) {
         // округление граний у кнопок
         button.layer.cornerRadius = 20
         // Добавление тени к кнопке
@@ -75,23 +89,37 @@ class ViewController: UIViewController {
         button.layer.shadowOpacity = 0.5
         button.layer.shadowRadius = 4
         button.layer.masksToBounds = false
-        return button
     }
     
-    //MARK: метод для выделение "score" жирным и увеличения size font
-    private func changeScoreApperance(of text: String) -> NSAttributedString {
+    //MARK: метод для выделения "score" жирным и увеличения size font
+    private func changeApperanceScore(for text: String) -> NSAttributedString {
         let attributedText = NSMutableAttributedString(string: text)
         let boldAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(ofSize: 22)
         ]
-        let scoreRange = NSRange(location: 19, length: "\(score)".count)
+        let scoreRange = NSRange(location: textLabel.count, length: "\(score)".count)
         attributedText.addAttributes(boldAttributes, range: scoreRange)
         return attributedText
     }
     
-    //MARK: метод обновления score lable
+    //MARK: метод обновления scoreLable
     private func updateScoreLabel() {
-        scoreLabel.attributedText = changeScoreApperance(of: "Значение счетчика: \(score)")
+        scoreLabel.attributedText = changeApperanceScore(for: textLabel + "\(score)")
+    }
+    
+    //MARK: метод обновления historyText
+    private func updateTextLabel() {
+        let historyString = historyArray.joined(separator: "\n")
+        historyText.text = historyString
+    }
+    
+    //MARK: метод редактирования формата даты и времени
+    private func currentDate() -> String {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
+        let formattedDate = dateFormatter.string(from: currentDate)
+        return formattedDate
     }
 }
 
