@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     private var score: Int = 0
     
+    
     // outlet отображения счетчика
     @IBOutlet weak var scoreLabel: UILabel!
     // outlet отображения истории изменений
@@ -40,23 +41,30 @@ class ViewController: UIViewController {
         scoreLabel.layer.cornerRadius = 10
         scoreLabel.clipsToBounds = true
         
-        //MARK: TextView
-        
-        
+        //MARK: TextView история изменений
+        //Округление краев textField
+        historyText.layer.cornerRadius = 10
+        historyText.clipsToBounds = true
         
         
         //MARK: КНОПКИ
-        // изменение внешнего вида у кнопок увеличения и уменьшения
+        // изменение внешнего вида у кнопок увеличения, уменьшения и сброса значения
         addButton = changingApperanceButton(of: addButton)
         subtractButton = changingApperanceButton(of: subtractButton)
-        resetButton.layer.cornerRadius = 20
+        resetButton = changingApperanceButton(of: resetButton)
         
     }
     
     //MARK: метод для изменения отображения кнопки (размер текста, округление формы)
     private func changingApperanceButton(of button: UIButton!) -> UIButton! {
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
+        // округление граний у кнопок
         button.layer.cornerRadius = 20
+        // Добавление тени к кнопке
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 4
+        button.layer.masksToBounds = false
         return button
     }
 }
