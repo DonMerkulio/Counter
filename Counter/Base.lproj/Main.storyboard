@@ -51,6 +51,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="large" weight="bold"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="addScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Txp-N2-amz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZ6-4c-Buc">
                                 <rect key="frame" x="223" y="629" width="150" height="50"/>
@@ -64,6 +67,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="large" weight="bold"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="subtractScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t9C-Qh-rli"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abt-Zp-QwP">
                                 <rect key="frame" x="20" y="699" width="353" height="50"/>
@@ -77,6 +83,9 @@
                                     <imageReference key="image" image="arrow.triangle.2.circlepath" catalog="system" symbolScale="large"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="default" weight="bold"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="resetScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YeD-fL-xQx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

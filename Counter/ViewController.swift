@@ -9,7 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private var score: Int = 0
+    private var score: Int = 0 {
+        didSet {
+            updateScoreLabel()
+        }
+    }
     
     
     // outlet отображения счетчика
@@ -27,16 +31,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //MARK: LABEL счетчик
-        //Выделение "score" жирным и увеличения size font
-        let attributedText = NSMutableAttributedString(string: "Значение счётчика: \(score)")
-        let boldAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: 22)
-        ]
-        let scoreRange = NSRange(location: 19, length: "\(score)".count)
-        attributedText.addAttributes(boldAttributes, range: scoreRange)
-        
         // Добавление форматированного текста в lable
-        scoreLabel.attributedText = attributedText
+        scoreLabel.attributedText = changeScoreApperance(of: "Значение счетчика: \(score)")
         // Округление краев lable
         scoreLabel.layer.cornerRadius = 10
         scoreLabel.clipsToBounds = true
@@ -55,6 +51,20 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func addScoreButton(_ sender: Any) {
+        score += 1
+    }
+    
+    @IBAction func subtractScoreButton(_ sender: Any) {
+        score -= 1
+    }
+    
+    @IBAction func resetScoreButton(_ sender: Any) {
+        score = 0
+    }
+
+    
+    
     //MARK: метод для изменения отображения кнопки (размер текста, округление формы)
     private func changingApperanceButton(of button: UIButton!) -> UIButton! {
         // округление граний у кнопок
@@ -66,6 +76,22 @@ class ViewController: UIViewController {
         button.layer.shadowRadius = 4
         button.layer.masksToBounds = false
         return button
+    }
+    
+    //MARK: метод для выделение "score" жирным и увеличения size font
+    private func changeScoreApperance(of text: String) -> NSAttributedString {
+        let attributedText = NSMutableAttributedString(string: text)
+        let boldAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: 22)
+        ]
+        let scoreRange = NSRange(location: 19, length: "\(score)".count)
+        attributedText.addAttributes(boldAttributes, range: scoreRange)
+        return attributedText
+    }
+    
+    //MARK: метод обновления score lable
+    private func updateScoreLabel() {
+        scoreLabel.attributedText = changeScoreApperance(of: "Значение счетчика: \(score)")
     }
 }
 
