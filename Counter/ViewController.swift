@@ -82,7 +82,7 @@ class ViewController: UIViewController {
     
     //MARK: метод для изменения отображения кнопки (размер текста, округление формы)
     private func changeApperanceButton(for button: UIButton!) {
-        // округление граний у кнопок
+        // округление граней у кнопки
         button.layer.cornerRadius = 20
         // Добавление тени к кнопке
         button.layer.shadowColor = UIColor.black.cgColor
