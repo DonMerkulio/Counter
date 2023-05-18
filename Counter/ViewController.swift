@@ -8,7 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     private var score: Int = 0 {
         didSet {
             updateScoreLabel()
@@ -39,7 +38,7 @@ class ViewController: UIViewController {
         // Округление краев lable
         scoreLabel.layer.cornerRadius = 10
         scoreLabel.clipsToBounds = true
-        // Добавление форматированного текста по умолчанию в lable
+        // Добавление форматированного текста по умолчанию в scoreLabel
         scoreLabel.attributedText = changeApperanceScore(for: textLabel + "\(score)")
 
         
@@ -47,7 +46,7 @@ class ViewController: UIViewController {
         //Округление краев textField
         historyText.layer.cornerRadius = 10
         historyText.clipsToBounds = true
-        
+        // Добавление текста по умолчанию в historyText
         historyArray.append("История изменений:")
         
         
