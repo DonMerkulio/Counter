@@ -112,6 +112,9 @@ class ViewController: UIViewController {
     private func updateTextLabel() {
         let historyString = historyArray.joined(separator: "\n")
         historyText.text = historyString
+        // Автоматическая прокрутка текста вниз
+        let range = NSRange(location: historyText.text.count - 1, length: 0)
+        historyText.scrollRangeToVisible(range)
     }
     
     //MARK: метод редактирования формата даты и времени
